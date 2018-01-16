@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRecyclerViewHolder>{
+public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRecyclerAdapter.BaseRecyclerViewHolder>{
     /**
      * normal item view type
      */
@@ -226,6 +226,16 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
      */
     public abstract void bindData(BaseRecyclerViewHolder holder, int position);
 
+    static abstract class BaseRecyclerViewHolder extends RecyclerView.ViewHolder {
+
+        public BaseRecyclerViewHolder(View itemView) {
+            super(itemView);
+            findView(itemView);
+        }
+
+        public abstract void findView(View v);
+    }
+
     /**
      *header view ViewHolder
      */
@@ -236,7 +246,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
         }
 
         @Override
-        public void getView(View v) {
+        public void findView(View v) {
         }
     }
 
@@ -250,7 +260,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
         }
 
         @Override
-        public void getView(View v) {
+        public void findView(View v) {
         }
     }
 

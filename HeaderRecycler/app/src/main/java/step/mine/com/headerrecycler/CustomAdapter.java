@@ -41,7 +41,7 @@ public class CustomAdapter extends BaseRecyclerAdapter<Integer> {
         }
 
         @Override
-        public void getView(View v) {
+        public void findView(View v) {
             container = itemView.findViewById(R.id.container);
             content = itemView.findViewById(R.id.content);
             ViewGroup.LayoutParams layoutParams = container.getLayoutParams();

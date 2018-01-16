@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,5 +37,11 @@ public class MainActivity extends AppCompatActivity {
         mCustomAdapter = new CustomAdapter(this);
         mCustomAdapter.setFooterView(this, R.layout.header_or_footer_layout);
         mCustomAdapter.setHeaderView(this, R.layout.header_or_footer_layout);
+        mCustomAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<Integer>() {
+            @Override
+            public void onItemClick(int position, Integer data) {
+                Toast.makeText(getApplicationContext(), data + "", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
